@@ -20,4 +20,8 @@
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- TODO: Debug only-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
 </manifest>

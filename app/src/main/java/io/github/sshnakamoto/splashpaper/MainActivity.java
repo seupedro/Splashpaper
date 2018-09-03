@@ -25,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
                 .add(R.id.parent_view, new WorkerFragment())
                 .commit();
 
+        if (BuildConfig.DEBUG) {
+            // Calling this from your launcher activity is enough, but I needed a good example spot ;)
+            DebugUtils.riseAndShine(this);
+        }
+
     }
 
     private void workerSetup(){
