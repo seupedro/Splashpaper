@@ -39,6 +39,7 @@ dependencies {
     //GSON
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    //OkDownload
+    //RootBeer
+    implementation 'com.scottyab:rootbeer-lib:0.0.7'
 
 }

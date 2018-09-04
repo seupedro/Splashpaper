@@ -11,8 +11,10 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.ref.WeakReference;
 import java.util.Objects;
 
@@ -63,6 +65,7 @@ public class WorkerTask extends AsyncTask<String, Void, Bitmap> {
                         .url(imageUrl)
                         .build();
 
+
                 Response imageResponse = client.newCall(imageResquest).execute();
                 if (imageResponse.isSuccessful()) {
 
@@ -70,6 +73,7 @@ public class WorkerTask extends AsyncTask<String, Void, Bitmap> {
                     return BitmapFactory.decodeStream(imageResponse.body().byteStream());
                 } else {
                     Log.d(TAG, "doInBackground: Error #130");
+                    imageResponse.close();
                 }
             } else {
                 Log.d(TAG, "doInBackground: Error #120");
@@ -93,6 +97,7 @@ public class WorkerTask extends AsyncTask<String, Void, Bitmap> {
             try {
                 /* Applying on User UI */
                 WallpaperManager.getInstance(weakContext.get()).setBitmap(wallpaper);
+                weakImage.get().setImageBitmap(wallpaper);
             } catch (IOException e) {
                 e.printStackTrace();
             }
